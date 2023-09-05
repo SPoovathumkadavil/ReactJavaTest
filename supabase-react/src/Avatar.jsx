@@ -56,12 +56,12 @@ export default function Avatar({ url, size, onUpload }) {
           src={avatarUrl}
           alt="Avatar"
           className="avatar image"
-          style={{ height: size, width: size, alignContent: 'center' }}
+          style={{ height: size, width: size }}
         />
       ) : (
-        <div className="avatar no-image" style={{ height: size, width: size, alignContent: 'center' }} />
+        <div className="avatar no-image" style={{ height: size, width: size }} />
       )}
-      <div style={{ width: size, alignContent: 'center' }}>
+      <div style={{ width: size }}>
         <label className="button primary block" htmlFor="single">
           {uploading ? 'Uploading ...' : 'Upload'}
         </label>

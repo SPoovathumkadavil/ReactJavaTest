@@ -274,16 +274,11 @@ button.primary,
 }
 .avatar.image {
   object-fit: cover;
-  align-content: center;
-  border-radius: 50%;
-  flex: auto;
 }
 .avatar.no-image {
   background-color: #333;
   border: 1px solid rgb(200, 200, 200);
-  border-radius: 50%;
-  flex: auto;
-  align-content: center;
+  border-radius: 5px;
 }
 
 .footer {

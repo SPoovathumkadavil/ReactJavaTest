@@ -15,7 +15,7 @@ export default function Account({ session }) {
 
       let { data, error } = await supabase
         .from('profiles')
-        .select(`username, avatar_url`)
+        .select(`username, website, avatar_url`)
         .eq('id', user.id)
         .single()
 
@@ -23,6 +23,7 @@ export default function Account({ session }) {
         console.warn(error)
       } else if (data) {
         setUsername(data.username)
+        setWebsite(data.website)
         setAvatarUrl(data.avatar_url)
       }
 
@@ -54,9 +55,9 @@ export default function Account({ session }) {
     }
     setLoading(false)
   }
+
   return (
     <form onSubmit={updateProfile} className="form-widget">
-      {/* Add to the body */}
       <Avatar
         url={avatar_url}
         size={150}
@@ -64,7 +65,32 @@ export default function Account({ session }) {
           updateProfile(event, url)
         }}
       />
-      {/* ... */}
+      <div>
+        <label htmlFor="email">Email</label>
+        <input id="email" type="text" value={session.user.email} disabled />
+      </div>
+      <div>
+        <label htmlFor="username">Name</label>
+        <input
+          id="username"
+          type="text"
+          required
+          value={username || ''}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+      </div>
+
+      <div>
+        <button className="button block primary" type="submit" disabled={loading}>
+          {loading ? 'Loading ...' : 'Update'}
+        </button>
+      </div>
+
+      <div>
+        <button className="button block" type="button" onClick={() => supabase.auth.signOut()}>
+          Sign Out
+        </button>
+      </div>
     </form>
-)
+  )
 }

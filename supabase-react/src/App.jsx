@@ -1,5 +1,5 @@
-import './App.css'
 import { useState, useEffect } from 'react'
+import './App.css'
 import { supabase } from './supabaseClient'
 import Auth from './Auth'
 import Account from './Account'
